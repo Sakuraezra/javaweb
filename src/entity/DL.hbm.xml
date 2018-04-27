@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+         <hibernate-mapping>
+        	 <class name="entity.DL" table="dl"> 
+        	 	<!-- 配置属性 -->
+        	 	<id name="rid" column="rid">
+        	 	<!-- 增长策略 -->
+    	     	<generator class="native"></generator>  
+     	 	</id>
+        	 	<property name="age"  column="Age"  ></property>   
+        	 	<property name="income"  column="Income" ></property>   
+              	<property name="distance"  column="Distance" ></property>     	 	      	 	
+       	 	    <property name="weather"  column="Weather" ></property>     	 	      	 	
+        	 	<property name="result"  column="Result" ></property>     	 	     
+        	 </class>
+</hibernate-mapping>

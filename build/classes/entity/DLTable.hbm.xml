@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+         <hibernate-mapping>
+        	 <class name="entity.DLTable" table="DLTable"> 
+        	 	<!-- 配置属性 -->
+        	 	<id name="Tid" column="Tid">
+        	 	<!-- 增长策略 -->
+    	   <!--   	<generator class="native"></generator>   -->
+     	 	</id>
+        	 	<property name="nodeIndex"  column="nodeIndex"  ></property>   
+        	 	<property name="valueType"  column="valueType" ></property>   
+              	<property name="LevelNum"  column="LevelNum" ></property>     	 	      	 	
+       	 	    <property name="LayerType"  column="LayerType" ></property>     	 	      	 	
+        	 	<property name="lchildIndex"  column="lchildIndex" ></property>   
+        	 	<property name="rchildIndex"  column="rchildIndex"  ></property>   
+        	 	<property name="parentNodeIndex"  column="parentNodeIndex" ></property>  	 	     
+        		<property name="dataIndexArrays"  column="dataIndexArrays" ></property>   
+        		<property name="result" column="result"></property>  	
+        		<!-- <list name="dataIndexArray" table="dataIndexArrayTable" cascade="all">  
+          	 	<key column="Array_id"></key>  
+          		<list-index column="list_order"></list-index>  注意index是数据库中的关键字要避免与其冲突，此处index_对应元素在List中的索引  
+         	    <element type="integer" column="IndexArray"></element>  
+        </list>   -->
+             	      	 	
+      		 	<!--    <property name="map"  column="map" ></property>     	 --> 	      	 	
+        	 </class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+ <package name ="demo" extends="struts-default" namespace="/">
+ 	 	<interceptors>
+ 			<interceptor name="loginintercept" class="interceptor.LoginInterceptor"></interceptor>
+ 		</interceptors>  
+		<action name="user_*" class="userAction" method="{1}">
+		 	 	<interceptor-ref name="defaultStack"></interceptor-ref>		
+				<interceptor-ref name="loginintercept">
+					<param name="excludeMethods">index,reg,login</param>					
+				</interceptor-ref> 
+			<result name="list">/jsp/travel1.jsp</result>
+			<result name="index">/jsp/index.jsp</result>
+			<result name="toreg">/jsp/reg.jsp</result>
+			<result name="login">/jsp/login.jsp</result>
+			<result name="plist">/jsp/user_place.jsp</result>
+			<result name="travel">/jsp/travel.jsp</result>
+			<result name="loginsuccess">/jsp/service.jsp</result>
+			<result name="service">/jsp/service.jsp</result>
+		
+			<result name="logout">/jsp/index.jsp</result>
+			<result name="fail">/jsp/reg.jsp</result>
+			<result name="reg">/jsp/index.jsp</result>
+		</action>
+		
+		<action name="place_*" class="placeAction" method="{1}">
+			<result name="list">/jsp/travel1.jsp</result>
+			<result name="findAll1">/jsp/list.jsp</result>
+			<result name="listpage">/jsp/show.jsp</result>
+		</action>
+		
+		
+		<action name="dltable_*" class="dltableAction" method="{1}">
+			<result name="DL">/jsp/dltreeUI.jsp</result>
+			<result name="input">/jsp/dltrain.jsp</result>
+			<result name="traintree">/jsp/dlresult.jsp</result>
+			<result name="listpage">/jsp/list.jsp</result>
+			<result name="plist">/jsp/user_place.jsp</result>
+			
+		</action>
+</package> 
+</struts>    

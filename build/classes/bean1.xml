@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd"> <!-- bean definitions here -->
+
+	<!-- c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+			<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+			<property name="user" value="xdy"></property>
+			<property name="password" value="a131313a"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<!-- 注入dataSource -->
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>				
+	</bean>
+	
+	
+	<!-- 配置事务管理器 -->
+	 <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<!--	注入sessionFactory-->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 开启事务管理器--> 
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	 	
+
+	 <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+	 <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean> 
+	<import resource="classpath:place.xml"/>	
+	<import resource="classpath:user.xml"/>	
+	<import resource="classpath:dl.xml"/>	
+	<import resource="classpath:dltable.xml"/>	
+		
+</beans>
